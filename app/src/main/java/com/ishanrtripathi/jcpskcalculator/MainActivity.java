@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16;
     EditText et360,et300,et275,et250,et225,et200,et175,et150;
@@ -42,63 +42,157 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         et175=findViewById(R.id.et175);
         et150=findViewById(R.id.et150);
 
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId())
-        {
-            case R.id.b2:
-                et360.setText(String.valueOf(Integer.parseInt(et360.getText().toString())-50));
-                break;
-            case R.id.b5:
-                et300.setText(String.valueOf(Integer.parseInt(et300.getText().toString())-50));
-                break;
-            case R.id.b3:
-                et275.setText(String.valueOf(Integer.parseInt(et275.getText().toString())-50));
-                break;
-            case R.id.b4:
-                et250.setText(String.valueOf(Integer.parseInt(et250.getText().toString())-50));
-                break;
-            case R.id.b6:
-                et225.setText(String.valueOf(Integer.parseInt(et225.getText().toString())-50));
-                break;
-            case R.id.b8:
-                et200.setText(String.valueOf(Integer.parseInt(et200.getText().toString())-50));
-                break;
-            case R.id.b9:
-                et175.setText(String.valueOf(Integer.parseInt(et175.getText().toString())-50));
-                break;
-            case R.id.b7:
-                et150.setText(String.valueOf(Integer.parseInt(et150.getText().toString())-50));
-                break;
-            //------------------------------------------------------//
-            case R.id.b10:
-                et360.setText(String.valueOf(Integer.parseInt(et360.getText().toString())+50));
-                break;
-            case R.id.b11:
-                et300.setText(String.valueOf(Integer.parseInt(et300.getText().toString())+50));
-                break;
-            case R.id.b1:
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 et275.setText(String.valueOf(Integer.parseInt(et275.getText().toString())+50));
-                break;
-            case R.id.b16:
-                et250.setText(String.valueOf(Integer.parseInt(et250.getText().toString())+50));
-                break;
-            case R.id.b15:
-                et225.setText(String.valueOf(Integer.parseInt(et225.getText().toString())+50));
-                break;
-            case R.id.b14:
-                et200.setText(String.valueOf(Integer.parseInt(et200.getText().toString())+50));
-                break;
-            case R.id.b12:
+            }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Integer.parseInt(et360.getText().toString())-50<=0){
+                    et360.setText("0");
+                    return;
+                }
+                et360.setText(String.valueOf(Integer.parseInt(et360.getText().toString())-50));
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Integer.parseInt(et275.getText().toString())-50<=0)
+                {
+                    et275.setText("0");
+                    return;
+                }
+                et275.setText(String.valueOf(Integer.parseInt(et275.getText().toString())-50));
+            }
+        });
+
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Integer.parseInt(et250.getText().toString())-50<=0)
+                {
+                    et250.setText("0");
+                    return;
+                }
+                et250.setText(String.valueOf(Integer.parseInt(et250.getText().toString())-50));
+            }
+        });
+
+        b5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Integer.parseInt(et300.getText().toString())-50<=0)
+                {
+                    et300.setText("0");
+                    return;
+                }
+                et300.setText(String.valueOf(Integer.parseInt(et300.getText().toString())-50));
+            }
+        });
+
+        b6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Integer.parseInt(et225.getText().toString())-50<=0)
+                {
+                    et225.setText("0");
+                    return;
+                }
+                et225.setText(String.valueOf(Integer.parseInt(et225.getText().toString())-50));
+            }
+        });
+
+        b7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Integer.parseInt(et150.getText().toString())-50<=0)
+                {
+                    et150.setText("0");
+                    return;
+                }
+                et150.setText(String.valueOf(Integer.parseInt(et150.getText().toString())-50));
+            }
+        });
+
+        b8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Integer.parseInt(et200.getText().toString())-50<=0)
+                {
+                    et200.setText("0");
+                    return;
+                }
+                et200.setText(String.valueOf(Integer.parseInt(et200.getText().toString())-50));
+            }
+        });
+
+        b9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Integer.parseInt(et175.getText().toString())-50<=0)
+                {
+                    et175.setText("0");
+                    return;
+                }
+                et175.setText(String.valueOf(Integer.parseInt(et175.getText().toString())-50));
+            }
+        });
+
+        b10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                et360.setText(String.valueOf(Integer.parseInt(et360.getText().toString())+50));
+            }
+        });
+
+        b11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                et300.setText(String.valueOf(Integer.parseInt(et300.getText().toString())+50));
+            }
+        });
+
+        b12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 et175.setText(String.valueOf(Integer.parseInt(et175.getText().toString())+50));
-                break;
-            case R.id.b13:
+            }
+        });
+
+        b13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 et150.setText(String.valueOf(Integer.parseInt(et150.getText().toString())+50));
-                break;
-        }
+            }
+        });
+
+        b14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                et200.setText(String.valueOf(Integer.parseInt(et200.getText().toString())+50));
+            }
+        });
+
+        b15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                et225.setText(String.valueOf(Integer.parseInt(et225.getText().toString())+50));
+            }
+        });
+
+        b16.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                et250.setText(String.valueOf(Integer.parseInt(et250.getText().toString())+50));
+            }
+        });
+
     }
 
     public void updateValues()
