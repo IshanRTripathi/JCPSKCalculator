@@ -2,18 +2,34 @@ package com.ishanrtripathi.jcpskcalculator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Locale;
+
+public class MainActivity extends AppCompatActivity implements TextWatcher{
 
     Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16;
     EditText et360,et300,et275,et250,et225,et200,et175,et150;
     TextView tv360,tv300,tv275,tv250,tv225,tv200,tv175,tv150,totalUnits,totalRM,totalMT;
     int unitList[]=new int[8];
     double a1,a2,a3,a4,a5,a6,a7,a8;
+    int index;
+    EditText e;
+    public MainActivity()
+    {}
+
+    public MainActivity(EditText et,int in)
+    {
+        e=et;
+        index=in;
+        //setTotalUnits();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                     et360.setText("0");
                     tv360.setText("0");
                     unitList[7]=0;
+                    a8=0;
                     setTotalUnits();
                     return;
                 }
@@ -97,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     et275.setText("0");
                     unitList[5]=0;
+                    a6=0;
                     tv275.setText("0");
                     setTotalUnits();
                     return;
@@ -118,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     et250.setText("0");
                     unitList[4]=0;
+                    a5=0;
                     tv250.setText("0");
                     setTotalUnits();
                     return;
@@ -139,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     et300.setText("0");
                     unitList[6]=0;
+                    a7=0;
                     tv300.setText("0");
                     setTotalUnits();
                     return;
@@ -160,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     et225.setText("0");
                     unitList[3]=0;
+                    a4=0;
                     tv225.setText("0");
                     setTotalUnits();
                     return;
@@ -181,13 +202,13 @@ public class MainActivity extends AppCompatActivity {
                 {
                     et150.setText("0");
                     unitList[0]=0;
+                    a1=0;
                     tv150.setText("0");
                     setTotalUnits();
                     return;
                 }
                 et150.setText(String.valueOf(x));
                 unitList[0]=x;
-
                 a1=unitList[0]*1.5;
                 tv150.setText(String.valueOf(a1));
                 setTotalUnits();
@@ -203,6 +224,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     et200.setText("0");
                     unitList[2]=0;
+                    a3=0;
                     tv200.setText("0");
                     setTotalUnits();
                     return;
@@ -224,6 +246,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     et175.setText("0");
                     unitList[1]=0;
+                    a2=0;
                     tv175.setText("0");
                     setTotalUnits();
                     return;
@@ -326,22 +349,67 @@ public class MainActivity extends AppCompatActivity {
                 setTotalUnits();
             }
         });
+        et360.addTextChangedListener(new MainActivity(et360,7));
+        et300.addTextChangedListener(new MainActivity(et300,6));
+        et275.addTextChangedListener(new MainActivity(et275,5));
+        et250.addTextChangedListener(new MainActivity(et250,4));
+        et225.addTextChangedListener(new MainActivity(et225,3));
+        et200.addTextChangedListener(new MainActivity(et200,2));
+        et175.addTextChangedListener(new MainActivity(et175,1));
+        et150.addTextChangedListener(new MainActivity(et150,0));
 
     }
 
     public void setTotalUnits()
     {
-        //------------------------------------//
-
-        //------------------------------------//
         int s=0;
         for(int i=0;i<8;i++)
         {
             s+=unitList[i];
             }
         totalUnits.setText(String.valueOf(s));
+
+        updateTotalRM();
     }
 
     public void updateTotalRM() {
+        double k=a1+a2+a3+a4+a5+a6+a7+a8;
+        totalRM.setText(String.valueOf(k));
+        updateMT(k);
+    }
+
+    public void updateMT(double k) {
+        k=k/78.74;
+        //String.format("%.3g%n",k);
+        totalMT.setText(String.format(Locale.US,"%.4g%n",k));
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        int x;
+        if(!(e.getText().toString().equals("")))
+            x=Integer.parseInt(e.getText().toString());
+        else
+            x=0;
+        unitList[index]=x;
+        for(int i=0;i<8;i++)
+        {
+            Log.i("UnitList "+i,String.valueOf(unitList[i]));
+        }
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
     }
 }
+/*
+if(!(totalUnits.toString().equals("")))
+        totalUnits.setText(String.valueOf(s));
+*/
