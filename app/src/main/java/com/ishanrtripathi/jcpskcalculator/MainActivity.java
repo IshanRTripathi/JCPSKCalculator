@@ -4,54 +4,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements TextWatcher{
+public class MainActivity extends AppCompatActivity {
 
-    Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16;
     EditText et360,et300,et275,et250,et225,et200,et175,et150;
     TextView tv360,tv300,tv275,tv250,tv225,tv200,tv175,tv150,totalUnits,totalRM,totalMT;
-    int unitList[]=new int[8];
-    double a1,a2,a3,a4,a5,a6,a7,a8;
-    int index;
-    EditText e;
-    public MainActivity()
-    {}
-
-    public MainActivity(EditText et,int in)
-    {
-        e=et;
-        index=in;
-        //setTotalUnits();
-    }
+    double rmList[]=new double[8];
+    int tuList[]=new int[8];
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        b1=findViewById(R.id.b1);
-        b2=findViewById(R.id.b2);
-        b3=findViewById(R.id.b3);
-        b4=findViewById(R.id.b4);
-        b5=findViewById(R.id.b5);
-        b6=findViewById(R.id.b6);
-        b7=findViewById(R.id.b7);
-        b8=findViewById(R.id.b8);
-        b9=findViewById(R.id.b9);
-        b10=findViewById(R.id.b10);
-        b11=findViewById(R.id.b11);
-        b12=findViewById(R.id.b12);
-        b13=findViewById(R.id.b13);
-        b14=findViewById(R.id.b14);
-        b15=findViewById(R.id.b15);
-        b16=findViewById(R.id.b16);
         et360=findViewById(R.id.et360);
         et300=findViewById(R.id.et300);
         et275=findViewById(R.id.et275);
@@ -72,344 +41,230 @@ public class MainActivity extends AppCompatActivity implements TextWatcher{
         totalRM=findViewById(R.id.totalRM);
         totalMT=findViewById(R.id.totalMT);
 
-        b1.setOnClickListener(new View.OnClickListener() {
+        et360.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et275.getText().toString());
-                x=x+50;
-                et275.setText(String.valueOf(x));
-                unitList[5]=x;
-                a6=unitList[5]*2.75;
-                tv275.setText(String.valueOf(a6));
-                setTotalUnits();
-            }
-        });
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et360.getText().toString());
-                x=x-50;
-                if(x<=0){
-                    et360.setText("0");
-                    tv360.setText("0");
-                    unitList[7]=0;
-                    a8=0;
-                    setTotalUnits();
-                    return;
-                }
-                et360.setText(String.valueOf(x));
-                unitList[7]=x;a8=unitList[7]*3.6;
-                tv360.setText(String.valueOf(a8));
-                setTotalUnits();
             }
-        });
 
-        b3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et275.getText().toString());
-                x=x-50;
-                if(x<=0)
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
+                    tuList[7] = Integer.parseInt(s.toString());
+                }catch (NumberFormatException e)
                 {
-                    et275.setText("0");
-                    unitList[5]=0;
-                    a6=0;
-                    tv275.setText("0");
-                    setTotalUnits();
-                    return;
+                    tuList[7]=0;
                 }
-                et275.setText(String.valueOf(x));
-                unitList[5]=x;
-                a6=unitList[5]*2.75;
-                tv275.setText(String.valueOf(a6));
-                setTotalUnits();
+                rmList[7] = tuList[7] * 3.60;
+                tv360.setText(String.valueOf(rmList[7]));
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
-
-        b4.setOnClickListener(new View.OnClickListener() {
+        et300.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et250.getText().toString());
-                x=x-50;
-                if(x<=0)
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
+                    tuList[6] = Integer.parseInt(s.toString());
+                    updateTU();
+                }catch (NumberFormatException e)
                 {
-                    et250.setText("0");
-                    unitList[4]=0;
-                    a5=0;
-                    tv250.setText("0");
-                    setTotalUnits();
-                    return;
+                    tuList[6]=0;
                 }
-                et250.setText(String.valueOf(x));
-                unitList[4]=x;
-                a5=unitList[4]*2.5;
-                tv250.setText(String.valueOf(a5));
-                setTotalUnits();
+                rmList[6] = tuList[6] * 3.00;
+                tv300.setText(String.valueOf(rmList[6]));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
-
-        b5.setOnClickListener(new View.OnClickListener() {
+        et275.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et300.getText().toString());
-                x=x-50;
-                if(x<=0)
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
+                    tuList[5] = Integer.parseInt(s.toString());
+                    rmList[5] = tuList[5] * 2.75;
+                }catch (NumberFormatException e)
                 {
-                    et300.setText("0");
-                    unitList[6]=0;
-                    a7=0;
-                    tv300.setText("0");
-                    setTotalUnits();
-                    return;
+                    tuList[5]=0;
                 }
-                et300.setText(String.valueOf(x));
-                unitList[6]=x;
-                a7=unitList[6]*3.0;
-                tv300.setText(String.valueOf(a7));
-                setTotalUnits();
+                tv275.setText(String.valueOf(rmList[5]));
+                updateTU();
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
-
-        b6.setOnClickListener(new View.OnClickListener() {
+        et250.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et225.getText().toString());
-                x=x-50;
-                if(x<=0)
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
+                    tuList[4] = Integer.parseInt(s.toString());
+                    rmList[4] = tuList[4] * 2.50;
+                }catch (NumberFormatException e)
                 {
-                    et225.setText("0");
-                    unitList[3]=0;
-                    a4=0;
-                    tv225.setText("0");
-                    setTotalUnits();
-                    return;
+                    tuList[4]=0;
+                    rmList[4]=0;
                 }
-                et225.setText(String.valueOf(x));
-                unitList[3]=x;
-                a4=unitList[3]*2.25;
-                tv225.setText(String.valueOf(a4));
-                setTotalUnits();
+                tv250.setText(String.valueOf(rmList[4]));
+                updateTU();
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
-
-        b7.setOnClickListener(new View.OnClickListener() {
+        et225.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et150.getText().toString());
-                x=x-50;
-                if(x<=0)
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try{
+                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
+                    tuList[3]=Integer.parseInt(s.toString());
+                    rmList[3]=tuList[3]*2.25;
+                }catch (NumberFormatException e)
                 {
-                    et150.setText("0");
-                    unitList[0]=0;
-                    a1=0;
-                    tv150.setText("0");
-                    setTotalUnits();
-                    return;
+                    tuList[3]=0;
+                    rmList[3]=0;
                 }
-                et150.setText(String.valueOf(x));
-                unitList[0]=x;
-                a1=unitList[0]*1.5;
-                tv150.setText(String.valueOf(a1));
-                setTotalUnits();
+                tv225.setText(String.valueOf(rmList[3]));
+                updateTU();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
-
-        b8.setOnClickListener(new View.OnClickListener() {
+        et200.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et200.getText().toString());
-                x=x-50;
-                if(x<=0)
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged( CharSequence s, int start, int before, int count) {
+                try
                 {
-                    et200.setText("0");
-                    unitList[2]=0;
-                    a3=0;
-                    tv200.setText("0");
-                    setTotalUnits();
-                    return;
-                }
-                et200.setText(String.valueOf(x));
-                unitList[2]=x;
-                a3=unitList[2]*2.0;
-                tv200.setText(String.valueOf(a3));
-                setTotalUnits();
-            }
-        });
-
-        b9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et175.getText().toString());
-                x=x-50;
-                if(x<=0)
+                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
+                    tuList[2]=Integer.parseInt(s.toString());
+                    rmList[2]=tuList[2]*2.00;
+                }catch (NumberFormatException e)
                 {
-                    et175.setText("0");
-                    unitList[1]=0;
-                    a2=0;
-                    tv175.setText("0");
-                    setTotalUnits();
-                    return;
+                    tuList[2]=0;
+                    rmList[2]=0;
                 }
-                et175.setText(String.valueOf(x));
-                unitList[1]=x;
-                a2=unitList[1]*1.75;
-                tv175.setText(String.valueOf(a2));
-                setTotalUnits();
+                tv200.setText(String.valueOf(rmList[2]));
+                updateTU();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        et175.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
+                    tuList[0] = Integer.parseInt(s.toString());
+                    rmList[1] = tuList[0] * 1.75;
+                }catch (NumberFormatException e)
+                {
+                    tuList[1]=0;
+                    rmList[1]=0;
+                }
+                tv175.setText(String.valueOf(rmList[1]));
+                updateTU();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        et150.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
+                    tuList[0] = Integer.parseInt(s.toString());
+                    rmList[0] = tuList[0] * 1.5;
+                }catch (NumberFormatException e)
+                {
+                    tuList[0]=0;
+                    rmList[0]=0;
+                }
+                tv150.setText(String.valueOf(rmList[0]));
+                updateTU();
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
-        b10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et360.getText().toString());
-                x=x+50;
-                et360.setText(String.valueOf(x));
-                unitList[7]=x;
-                a8=unitList[7]*3.6;
-                tv360.setText(String.valueOf(a8));
-                setTotalUnits();
-            }
-        });
-
-        b11.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et300.getText().toString());
-                x=x+50;
-                et300.setText(String.valueOf(x));
-                unitList[6]=x;
-                a7=unitList[6]*3.0;
-                tv300.setText(String.valueOf(a7));
-                setTotalUnits();
-            }
-        });
-
-        b12.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et175.getText().toString());
-                x=x+50;
-                et175.setText(String.valueOf(x));
-                unitList[1]=x;
-                a2=unitList[1]*1.75;
-                tv175.setText(String.valueOf(a2));
-                setTotalUnits();
-            }
-        });
-
-        b13.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et150.getText().toString());
-                x=x+50;
-                et150.setText(String.valueOf(x));
-                unitList[0]=x;
-                a1=unitList[0]*1.5;
-                tv150.setText(String.valueOf(a1));
-                setTotalUnits();
-            }
-        });
-
-        b14.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et200.getText().toString());
-                x=x+50;
-                et200.setText(String.valueOf(x));
-                unitList[2]=x;
-                a3=unitList[2]*2.0;
-                tv200.setText(String.valueOf(a3));
-                setTotalUnits();
-            }
-        });
-
-        b15.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et225.getText().toString());
-                x=x+50;
-                et225.setText(String.valueOf(x));
-                unitList[3]=x;
-                a4=unitList[3]*2.25;
-                tv225.setText(String.valueOf(a4));
-                setTotalUnits();
-            }
-        });
-
-        b16.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int x=Integer.parseInt(et250.getText().toString());
-                x=x+50;
-                et250.setText(String.valueOf(x));
-                unitList[4]=x;
-                a5=unitList[4]*2.5;
-                tv250.setText(String.valueOf(a5));
-                setTotalUnits();
-            }
-        });
-        et360.addTextChangedListener(new MainActivity(et360,7));
-        et300.addTextChangedListener(new MainActivity(et300,6));
-        et275.addTextChangedListener(new MainActivity(et275,5));
-        et250.addTextChangedListener(new MainActivity(et250,4));
-        et225.addTextChangedListener(new MainActivity(et225,3));
-        et200.addTextChangedListener(new MainActivity(et200,2));
-        et175.addTextChangedListener(new MainActivity(et175,1));
-        et150.addTextChangedListener(new MainActivity(et150,0));
 
     }
 
-    public void setTotalUnits()
-    {
+    private void updateTU() {
         int s=0;
         for(int i=0;i<8;i++)
         {
-            s+=unitList[i];
-            }
+            s+=tuList[i];
+        }
         totalUnits.setText(String.valueOf(s));
-
-        updateTotalRM();
+        updateTRM();
     }
 
-    public void updateTotalRM() {
-        double k=a1+a2+a3+a4+a5+a6+a7+a8;
-        totalRM.setText(String.valueOf(k));
-        updateMT(k);
-    }
-
-    public void updateMT(double k) {
-        k=k/78.74;
-        //String.format("%.3g%n",k);
-        totalMT.setText(String.format(Locale.US,"%.4g%n",k));
-    }
-
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        int x;
-        if(!(e.getText().toString().equals("")))
-            x=Integer.parseInt(e.getText().toString());
-        else
-            x=0;
-        unitList[index]=x;
+    private void updateTRM()
+    {
+        double s=0;
         for(int i=0;i<8;i++)
         {
-            Log.i("UnitList "+i,String.valueOf(unitList[i]));
+            s+=rmList[i];
         }
-
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
+        totalRM.setText(String.format(Locale.US,"%.4g%n",s));
+        totalMT.setText(String.format(Locale.US,"%.4g%n",s/78.74));
     }
 }
-/*
-if(!(totalUnits.toString().equals("")))
-        totalUnits.setText(String.valueOf(s));
-*/
