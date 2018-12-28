@@ -6,8 +6,5 @@
         android:radius="50dp"/>
     <solid
         android:color="@color/colorHeadingButton"/>
-    <stroke
-        android:color="@color/strokeHeadingButton"
-        android:width="4dp"/>
 
 </shape>
