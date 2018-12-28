@@ -26,27 +26,29 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/button_heading_bg"
-        android:text="@string/units"
         android:clickable="false"
+        android:text="@string/units"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/sizeButton"
         app:layout_constraintEnd_toStartOf="@+id/rmButton"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.292"
         app:layout_constraintStart_toEndOf="@+id/sizeButton"
-        app:layout_constraintTop_toTopOf="@+id/sizeButton" />
+        app:layout_constraintTop_toTopOf="@+id/sizeButton"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/rmButton"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="44dp"
         android:background="@drawable/button_heading_bg"
-        android:text="@string/r_m"
         android:clickable="false"
+        android:text="@string/r_m"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/unitsButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/unitsButton" />
+        app:layout_constraintTop_toTopOf="@+id/unitsButton"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/button360"
@@ -71,7 +73,7 @@
         android:inputType="number"
         android:padding="6dp"
         android:tag="8"
-        android:text="@string/zero"
+        android:hint="@string/zero"
         app:layout_constraintBottom_toBottomOf="@+id/button360"
         app:layout_constraintEnd_toEndOf="@+id/unitsButton"
         app:layout_constraintStart_toStartOf="@+id/unitsButton"
@@ -80,7 +82,7 @@
 
     <TextView
         android:id="@+id/tv360"
-        android:layout_width="80dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/button_inputs_bg"
@@ -116,7 +118,7 @@
         android:inputType="number"
         android:padding="6dp"
         android:tag="7"
-        android:text="@string/zero"
+        android:hint="@string/zero"
         app:layout_constraintBottom_toBottomOf="@+id/button300"
         app:layout_constraintEnd_toEndOf="@+id/et360"
         app:layout_constraintHorizontal_bias="1.0"
@@ -126,9 +128,8 @@
 
     <TextView
         android:id="@+id/tv300"
-        android:layout_width="80dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="44dp"
         android:background="@drawable/button_inputs_bg"
         android:ems="10"
         android:padding="6dp"
@@ -137,7 +138,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/et300"
         app:layout_constraintEnd_toEndOf="@+id/tv360"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/et300"
+        app:layout_constraintStart_toStartOf="@+id/rmButton"
         app:layout_constraintTop_toTopOf="@+id/et300"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -162,7 +163,7 @@
         android:inputType="number"
         android:padding="6dp"
         android:tag="6"
-        android:text="@string/zero"
+        android:hint="@string/zero"
         app:layout_constraintBottom_toBottomOf="@+id/button275"
         app:layout_constraintEnd_toEndOf="@+id/et360"
         app:layout_constraintHorizontal_bias="1.0"
@@ -172,9 +173,8 @@
 
     <TextView
         android:id="@+id/tv275"
-        android:layout_width="80dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="44dp"
         android:background="@drawable/button_inputs_bg"
         android:ems="10"
         android:padding="6dp"
@@ -183,7 +183,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/et275"
         app:layout_constraintEnd_toEndOf="@+id/tv360"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/et300"
+        app:layout_constraintStart_toStartOf="@+id/rmButton"
         app:layout_constraintTop_toTopOf="@+id/et275"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -208,7 +208,7 @@
         android:inputType="number"
         android:padding="6dp"
         android:tag="5"
-        android:text="@string/zero"
+        android:hint="@string/zero"
         app:layout_constraintBottom_toBottomOf="@+id/button250"
         app:layout_constraintEnd_toEndOf="@+id/et360"
         app:layout_constraintStart_toStartOf="@+id/et275"
@@ -217,9 +217,8 @@
 
     <TextView
         android:id="@+id/tv250"
-        android:layout_width="80dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
         android:background="@drawable/button_inputs_bg"
         android:ems="10"
         android:padding="6dp"
@@ -228,7 +227,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/et250"
         app:layout_constraintEnd_toEndOf="@+id/tv360"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/et250"
+        app:layout_constraintStart_toStartOf="@+id/rmButton"
         app:layout_constraintTop_toTopOf="@+id/et250"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -253,7 +252,7 @@
         android:inputType="number"
         android:padding="6dp"
         android:tag="4"
-        android:text="@string/zero"
+        android:hint="@string/zero"
         app:layout_constraintBottom_toBottomOf="@+id/button225"
         app:layout_constraintEnd_toEndOf="@+id/et360"
         app:layout_constraintHorizontal_bias="1.0"
@@ -263,9 +262,8 @@
 
     <TextView
         android:id="@+id/tv225"
-        android:layout_width="80dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
         android:background="@drawable/button_inputs_bg"
         android:ems="10"
         android:padding="6dp"
@@ -274,7 +272,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/et225"
         app:layout_constraintEnd_toEndOf="@+id/tv360"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/et225"
+        app:layout_constraintStart_toStartOf="@+id/tv250"
         app:layout_constraintTop_toTopOf="@+id/et225"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -299,7 +297,7 @@
         android:inputType="number"
         android:padding="6dp"
         android:tag="3"
-        android:text="@string/zero"
+        android:hint="@string/zero"
         app:layout_constraintBottom_toBottomOf="@+id/button200"
         app:layout_constraintEnd_toEndOf="@+id/et360"
         app:layout_constraintStart_toStartOf="@+id/et225"
@@ -307,9 +305,8 @@
 
     <TextView
         android:id="@+id/tv200"
-        android:layout_width="80dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
         android:background="@drawable/button_inputs_bg"
         android:ems="10"
         android:padding="6dp"
@@ -318,7 +315,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/et200"
         app:layout_constraintEnd_toEndOf="@+id/tv360"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/et200"
+        app:layout_constraintStart_toStartOf="@+id/tv225"
         app:layout_constraintTop_toTopOf="@+id/et200"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -344,7 +341,7 @@
         android:inputType="number"
         android:padding="6dp"
         android:tag="2"
-        android:text="@string/zero"
+        android:hint="@string/zero"
         app:layout_constraintBottom_toBottomOf="@+id/button175"
         app:layout_constraintEnd_toEndOf="@+id/et360"
         app:layout_constraintHorizontal_bias="1.0"
@@ -354,9 +351,8 @@
 
     <TextView
         android:id="@+id/tv175"
-        android:layout_width="80dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
         android:background="@drawable/button_inputs_bg"
         android:ems="10"
         android:padding="6dp"
@@ -365,7 +361,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/et175"
         app:layout_constraintEnd_toEndOf="@+id/tv360"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/et175"
+        app:layout_constraintStart_toStartOf="@+id/tv200"
         app:layout_constraintTop_toTopOf="@+id/et175" />
 
     <Button
@@ -389,7 +385,7 @@
         android:inputType="number"
         android:padding="6dp"
         android:tag="1"
-        android:text="@string/zero"
+        android:hint="@string/zero"
         app:layout_constraintBottom_toBottomOf="@+id/button150"
         app:layout_constraintEnd_toEndOf="@+id/et360"
         app:layout_constraintHorizontal_bias="1.0"
@@ -399,9 +395,8 @@
 
     <TextView
         android:id="@+id/tv150"
-        android:layout_width="80dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
         android:background="@drawable/button_inputs_bg"
         android:ems="10"
         android:padding="6dp"
@@ -410,7 +405,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/et150"
         app:layout_constraintEnd_toEndOf="@+id/tv360"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/et150"
+        app:layout_constraintStart_toStartOf="@+id/tv175"
         app:layout_constraintTop_toTopOf="@+id/et150"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -664,7 +659,6 @@
         android:id="@+id/totalMT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="0"
         android:textSize="20sp"

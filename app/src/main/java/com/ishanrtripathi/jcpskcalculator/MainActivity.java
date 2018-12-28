@@ -1,11 +1,15 @@
 package com.ishanrtripathi.jcpskcalculator;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -264,7 +268,18 @@ public class MainActivity extends AppCompatActivity {
         {
             s+=rmList[i];
         }
-        totalRM.setText(String.format(Locale.US,"%.4g%n",s));
+        totalRM.setText(String.format(Locale.US,"%.5g%n",s));
         totalMT.setText(String.format(Locale.US,"%.4g%n",s/78.74));
+        Toast toast = Toast.makeText(MainActivity.this, "M T : "+totalMT.getText().toString()+"\nR M : "+totalRM.getText().toString(), Toast.LENGTH_LONG);
+        View view = toast.getView();
+
+        //To change the Background of Toast
+        //view.setBackgroundColor(Color.WHITE);
+        TextView text = view.findViewById(android.R.id.message);
+
+        view.getBackground().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
+        text.setTextColor(Color.BLACK);
+        text.setTextSize(20);
+        toast.show();
     }
 }
