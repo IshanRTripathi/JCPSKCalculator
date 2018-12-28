@@ -17,4 +17,5 @@
     <string name="total_units">Total Units</string>
     <string name="total_rm">Total RM</string>
     <string name="m_t">M T</string>
+    <string name="z.z">0.0</string>
 </resources>
