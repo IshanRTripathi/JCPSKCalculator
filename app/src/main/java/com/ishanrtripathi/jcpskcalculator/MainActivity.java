@@ -56,12 +56,14 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
                     tuList[7] = Integer.parseInt(s.toString());
+                    rmList[7] = tuList[7] * 3.60;
                 }catch (NumberFormatException e)
                 {
                     tuList[7]=0;
+                    rmList[7]=0;
                 }
-                rmList[7] = tuList[7] * 3.60;
                 tv360.setText(String.valueOf(rmList[7]));
+                updateTU();
             }
             @Override
             public void afterTextChanged(Editable s) {
@@ -77,15 +79,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
                     tuList[6] = Integer.parseInt(s.toString());
-                    updateTU();
+                    rmList[6] = tuList[6] * 3.00;
                 }catch (NumberFormatException e)
                 {
                     tuList[6]=0;
+                    rmList[6]=0;
                 }
-                rmList[6] = tuList[6] * 3.00;
                 tv300.setText(String.valueOf(rmList[6]));
+                updateTU();
             }
 
             @Override
@@ -102,12 +104,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
                     tuList[5] = Integer.parseInt(s.toString());
                     rmList[5] = tuList[5] * 2.75;
                 }catch (NumberFormatException e)
                 {
                     tuList[5]=0;
+                    rmList[5]=0;
                 }
                 tv275.setText(String.valueOf(rmList[5]));
                 updateTU();
@@ -126,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
                     tuList[4] = Integer.parseInt(s.toString());
                     rmList[4] = tuList[4] * 2.50;
                 }catch (NumberFormatException e)
@@ -151,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try{
-                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
                     tuList[3]=Integer.parseInt(s.toString());
                     rmList[3]=tuList[3]*2.25;
                 }catch (NumberFormatException e)
@@ -178,7 +178,6 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged( CharSequence s, int start, int before, int count) {
                 try
                 {
-                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
                     tuList[2]=Integer.parseInt(s.toString());
                     rmList[2]=tuList[2]*2.00;
                 }catch (NumberFormatException e)
@@ -205,9 +204,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
-                    tuList[0] = Integer.parseInt(s.toString());
-                    rmList[1] = tuList[0] * 1.75;
+                    tuList[1] = Integer.parseInt(s.toString());
+                    rmList[1] = tuList[1] * 1.75;
                 }catch (NumberFormatException e)
                 {
                     tuList[1]=0;
@@ -231,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
+                    et150.setCursorVisible(true);
                     tuList[0] = Integer.parseInt(s.toString());
                     rmList[0] = tuList[0] * 1.5;
                 }catch (NumberFormatException e)
@@ -272,13 +270,10 @@ public class MainActivity extends AppCompatActivity {
         totalMT.setText(String.format(Locale.US,"%.4g%n",s/78.74));
         Toast toast = Toast.makeText(MainActivity.this, "M T : "+totalMT.getText().toString()+"\nR M : "+totalRM.getText().toString(), Toast.LENGTH_LONG);
         View view = toast.getView();
-
-        //To change the Background of Toast
-        //view.setBackgroundColor(Color.WHITE);
         TextView text = view.findViewById(android.R.id.message);
 
-        view.getBackground().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
-        text.setTextColor(Color.BLACK);
+        view.getBackground().setColorFilter(Color.parseColor("#c23616"), PorterDuff.Mode.SRC_IN);
+        text.setTextColor(Color.WHITE);
         text.setTextSize(20);
         toast.show();
     }
