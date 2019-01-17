@@ -1,20 +1,13 @@
 package com.ishanrtripathi.jcpskcalculator;
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.androidadvance.topsnackbar.TSnackbar;
 
 import java.util.Locale;
 
@@ -71,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    //Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
                     tuList[7] = Integer.parseInt(s.toString());
                     rmList[7] = tuList[7] * 3.60;
                 }catch (NumberFormatException e)
@@ -271,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
                     tuList[8] = Integer.parseInt(s.toString());
-                    rmList[8] = tuList[8] * 1.5;
+                    rmList[8] = tuList[8] * 1.25;
                 }catch (NumberFormatException e)
                 {
                     tuList[8]=0;
@@ -295,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
                     tuList[9] = Integer.parseInt(s.toString());
-                    rmList[9] = tuList[9] * 1.5;
+                    rmList[9] = tuList[9] * 1.0;
                 }catch (NumberFormatException e)
                 {
                     tuList[9]=0;
