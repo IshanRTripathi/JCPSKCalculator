@@ -121,26 +121,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="Receipt"
+                android:onClick="generateReceipt"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/button100"
                 app:layout_constraintHorizontal_bias="0.049"
                 app:layout_constraintStart_toStartOf="@+id/button100" />
 
             <Button
-                android:id="@+id/shareAppButton"
+                android:id="@+id/creditsButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Share App"
-                app:layout_constraintBottom_toBottomOf="@+id/updateButton"
+                android:text="Credits"
+                app:layout_constraintBottom_toBottomOf="@+id/resetButton"
                 app:layout_constraintEnd_toEndOf="@+id/tv100"
                 app:layout_constraintStart_toStartOf="@+id/tv100"
-                app:layout_constraintTop_toTopOf="@+id/updateButton" />
+                app:layout_constraintTop_toTopOf="@+id/resetButton" />
 
             <Button
-                android:id="@+id/updateButton"
+                android:id="@+id/resetButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Update App"
+                android:text="Reset All"
                 app:layout_constraintBottom_toBottomOf="@+id/receiptButton"
                 app:layout_constraintEnd_toEndOf="@+id/et100"
                 app:layout_constraintStart_toStartOf="@+id/et100"

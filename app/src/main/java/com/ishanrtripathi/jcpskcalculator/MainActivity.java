@@ -1,10 +1,10 @@
 package com.ishanrtripathi.jcpskcalculator;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,8 +24,10 @@ public class MainActivity extends AppCompatActivity {
     EditText et360,et300,et275,et250,et225,et200,et175,et150,et125,et100;
     TextView tv360,tv300,tv275,tv250,tv225,tv200,tv175,tv150,tv125,tv100,totalUnits,totalRM,totalMT;
     double[] rmList = new double[10];
+    double[] sizeList = new double[]{3.60,3.00,2.75,2.50,2.25,2.00,1.75,1.50,1.25,1.00};
     int[] tuList = new int[10];
-    Button reset;
+    String []testArray;
+    Button resetButton, receiptButton, creditsButton;
 
     private static final String fileName="lastSavedData.txt";
 
@@ -57,13 +59,16 @@ public class MainActivity extends AppCompatActivity {
         totalUnits=findViewById(R.id.totalUnits);
         totalRM=findViewById(R.id.totalRM);
         totalMT=findViewById(R.id.totalMT);
-        reset=findViewById(R.id.unitsButton);
-        reset.setOnClickListener(new View.OnClickListener() {
+        resetButton=findViewById(R.id.resetButton);
+        resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 resetAll();
             }
         });
+
+        receiptButton=findViewById(R.id.receiptButton);
+
 
         et360.addTextChangedListener(new TextWatcher() {
             @Override
@@ -314,10 +319,39 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void generateReceipt(View v)
+    {
+                try {
+                    saveData();
+                    loadData();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                updateTRM();
+                updateTU();
+                Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                StringBuilder URL = new StringBuilder();
+                URL.append("============ *Receipt* ============\n\n")
+                        .append("*Size*\t\t\t\t*Units*\t\t\t\t*Running Metres*\n")
+                        .append("__________________________________\n");
+                for(int i=0; i<10; i++)
+                    if(true)//!testArray[i].equals("0"))
+                        URL.append(sizeList[i]+"\t\t\t\t\t"+testArray[i]+"\t\t\t\t\t\t\t\t\t\t\t\t"+rmList[i]+"\n")
+                                .append("__________________________________\n");
+
+                URL.append("*Total Units*          : "+totalUnits.getText().toString())
+                        .append("\n*Total Running Metres* : "+totalRM.getText().toString())
+                        .append("*MT*                   : "+totalMT.getText().toString());
+                shareIntent.putExtra(Intent.EXTRA_TEXT, URL.toString());
+                startActivity(Intent.createChooser(shareIntent, "Share via"));
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
-//        resetAll();
+
         try {
             loadData();
         } catch (IOException e) {
@@ -399,7 +433,6 @@ public class MainActivity extends AppCompatActivity {
 
         String text;
 
-        String []testArray;
         while((text=reader.readLine())!=null)
         {
             data.append(text).append("\n");
@@ -411,7 +444,17 @@ public class MainActivity extends AppCompatActivity {
             String temp=testArray[i];
             testArray[i]=testArray[7-i];
             testArray[7-i]=temp;
+
+            double tempRM= rmList[i];
+            rmList[i]=rmList[7-i];
+            rmList[7-i]=tempRM;
         }
+        /*for(int i=0; i<5; i++)
+        {
+            int tempRM= (int) rmList[i];
+            rmList[i]=rmList[7-i];
+            rmList[7-i]=tempRM;
+        }*/
         et360.setText(testArray[0].equals("0") ?"":testArray[0]);
         et300.setText(testArray[1].equals("0") ?"":testArray[1]);
         et275.setText(testArray[2].equals("0") ?"":testArray[2]);
