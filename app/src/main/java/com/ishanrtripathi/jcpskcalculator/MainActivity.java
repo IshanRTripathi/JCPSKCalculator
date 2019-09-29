@@ -66,7 +66,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         receiptButton=findViewById(R.id.receiptButton);
-
+        creditsButton=findViewById(R.id.creditsButton);
+        creditsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,Credits.class));
+            }
+        });
 
         et360.addTextChangedListener(new TextWatcher() {
             @Override
