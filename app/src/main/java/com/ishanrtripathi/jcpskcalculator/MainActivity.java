@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText et360,et300,et275,et250,et225,et200,et175,et150,et125,et100;
     TextView tv360,tv300,tv275,tv250,tv225,tv200,tv175,tv150,tv125,tv100,totalUnits,totalRM,totalMT;
-    double rmList[]=new double[10];
-    int tuList[]=new int[10];
+    double[] rmList = new double[10];
+    int[] tuList = new int[10];
     Button reset;
 
     private static final String fileName="lastSavedData.txt";
@@ -383,15 +383,12 @@ public class MainActivity extends AppCompatActivity {
     private void saveData() throws IOException {
         FileOutputStream fileOutputStream;
         fileOutputStream=openFileOutput(fileName, MODE_PRIVATE);
-        byte[] contents=(String.valueOf(tuList[0])+"\n"+String.valueOf(tuList[1])+
-                "\n"+String.valueOf(tuList[2])+"\n"+String.valueOf(tuList[3])+
-                "\n"+String.valueOf(tuList[4])+"\n"+String.valueOf(tuList[5])+
-                "\n"+String.valueOf(tuList[6])+"\n"+String.valueOf(tuList[7])+
-                "\n"+String.valueOf(tuList[8])+"\n"+String.valueOf(tuList[9])).getBytes();
+        byte[] contents=(tuList[0]+"\n"+tuList[1]+
+                "\n"+(tuList[2])+"\n"+tuList[3]+
+                "\n"+(tuList[4])+"\n"+(tuList[5])+
+                "\n"+(tuList[6])+"\n"+(tuList[7])+
+                "\n"+(tuList[8])+"\n"+(tuList[9])).getBytes();
         fileOutputStream.write(contents);
-//        fileOutputStream.write(et360.getText().toString().getBytes());
-
-//        Toast.makeText(this, "Saved : "+et360.getText().toString()+"\n"+getFilesDir()+"/"+fileName, Toast.LENGTH_LONG).show();
     }
 
     private void loadData() throws IOException{
@@ -409,7 +406,12 @@ public class MainActivity extends AppCompatActivity {
         }
         testArray=data.toString().split("\n");
 
-//        Toast.makeText(this, ""+Arrays.toString(testArray), Toast.LENGTH_SHORT).show();
+        for(int i=0; i<4; i++)
+        {
+            String temp=testArray[i];
+            testArray[i]=testArray[7-i];
+            testArray[7-i]=temp;
+        }
         et360.setText(testArray[0].equals("0") ?"":testArray[0]);
         et300.setText(testArray[1].equals("0") ?"":testArray[1]);
         et275.setText(testArray[2].equals("0") ?"":testArray[2]);
