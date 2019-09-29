@@ -1,5 +1,6 @@
 package com.ishanrtripathi.jcpskcalculator;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,14 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -79,14 +77,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    tuList[7] = Integer.parseInt(s.toString());
-                    rmList[7] = tuList[7] * 3.60;
+                    tuList[0] = Integer.parseInt(s.toString());
+                    rmList[0] = tuList[0] * 3.60;
                 }catch (NumberFormatException e)
                 {
-                    tuList[7]=0;
-                    rmList[7]=0;
+                    tuList[0]=0;
+                    rmList[0]=0;
                 }
-                tv360.setText(String.valueOf(rmList[7]));
+                tv360.setText(String.valueOf(rmList[0]));
                 updateTU();
             }
             @Override
@@ -103,14 +101,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    tuList[6] = Integer.parseInt(s.toString());
-                    rmList[6] = tuList[6] * 3.00;
+                    tuList[1] = Integer.parseInt(s.toString());
+                    rmList[1] = tuList[1] * 3.00;
                 }catch (NumberFormatException e)
                 {
-                    tuList[6]=0;
-                    rmList[6]=0;
+                    tuList[1]=0;
+                    rmList[1]=0;
                 }
-                tv300.setText(String.valueOf(rmList[6]));
+                tv300.setText(String.valueOf(rmList[1]));
                 updateTU();
             }
 
@@ -128,14 +126,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    tuList[5] = Integer.parseInt(s.toString());
-                    rmList[5] = tuList[5] * 2.75;
+                    tuList[2] = Integer.parseInt(s.toString());
+                    rmList[2] = tuList[5] * 2.75;
                 }catch (NumberFormatException e)
                 {
-                    tuList[5]=0;
-                    rmList[5]=0;
+                    tuList[2]=0;
+                    rmList[2]=0;
                 }
-                tv275.setText(String.valueOf(rmList[5]));
+                tv275.setText(String.valueOf(rmList[2]));
                 updateTU();
             }
             @Override
@@ -152,14 +150,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    tuList[4] = Integer.parseInt(s.toString());
-                    rmList[4] = tuList[4] * 2.50;
+                    tuList[3] = Integer.parseInt(s.toString());
+                    rmList[3] = tuList[3] * 2.50;
                 }catch (NumberFormatException e)
                 {
-                    tuList[4]=0;
-                    rmList[4]=0;
+                    tuList[3]=0;
+                    rmList[3]=0;
                 }
-                tv250.setText(String.valueOf(rmList[4]));
+                tv250.setText(String.valueOf(rmList[3]));
                 updateTU();
             }
             @Override
@@ -176,14 +174,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try{
-                    tuList[3]=Integer.parseInt(s.toString());
-                    rmList[3]=tuList[3]*2.25;
+                    tuList[4]=Integer.parseInt(s.toString());
+                    rmList[4]=tuList[4]*2.25;
                 }catch (NumberFormatException e)
                 {
-                    tuList[3]=0;
-                    rmList[3]=0;
+                    tuList[4]=0;
+                    rmList[4]=0;
                 }
-                tv225.setText(String.valueOf(rmList[3]));
+                tv225.setText(String.valueOf(rmList[4]));
                 updateTU();
             }
 
@@ -202,14 +200,14 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged( CharSequence s, int start, int before, int count) {
                 try
                 {
-                    tuList[2]=Integer.parseInt(s.toString());
-                    rmList[2]=tuList[2]*2.00;
+                    tuList[5]=Integer.parseInt(s.toString());
+                    rmList[5]=tuList[5]*2.00;
                 }catch (NumberFormatException e)
                 {
-                    tuList[2]=0;
-                    rmList[2]=0;
+                    tuList[5]=0;
+                    rmList[5]=0;
                 }
-                tv200.setText(String.valueOf(rmList[2]));
+                tv200.setText(String.valueOf(rmList[5]));
                 updateTU();
 
             }
@@ -228,14 +226,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    tuList[1] = Integer.parseInt(s.toString());
-                    rmList[1] = tuList[1] * 1.75;
+                    tuList[6] = Integer.parseInt(s.toString());
+                    rmList[6] = tuList[6] * 1.75;
                 }catch (NumberFormatException e)
                 {
-                    tuList[1]=0;
-                    rmList[1]=0;
+                    tuList[6]=0;
+                    rmList[6]=0;
                 }
-                tv175.setText(String.valueOf(rmList[1]));
+                tv175.setText(String.valueOf(rmList[6]));
                 updateTU();
             }
 
@@ -253,14 +251,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    tuList[0] = Integer.parseInt(s.toString());
-                    rmList[0] = tuList[0] * 1.5;
+                    tuList[7] = Integer.parseInt(s.toString());
+                    rmList[7] = tuList[7] * 1.5;
                 }catch (NumberFormatException e)
                 {
-                    tuList[0]=0;
-                    rmList[0]=0;
+                    tuList[7]=0;
+                    rmList[7]=0;
                 }
-                tv150.setText(String.valueOf(rmList[0]));
+                tv150.setText(String.valueOf(rmList[7]));
                 updateTU();
             }
             @Override
@@ -319,6 +317,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("DefaultLocale")
     public void generateReceipt(View v)
     {
                 try {
@@ -337,13 +336,13 @@ public class MainActivity extends AppCompatActivity {
                         .append("*Size*\t\t\t\t*Units*\t\t\t\t*Running Metres*\n")
                         .append("__________________________________\n");
                 for(int i=0; i<10; i++)
-                    if(true)//!testArray[i].equals("0"))
-                        URL.append(sizeList[i]+"\t\t\t\t\t"+testArray[i]+"\t\t\t\t\t\t\t\t\t\t\t\t"+rmList[i]+"\n")
+                    if(!testArray[i].equals("0"))
+                        URL.append(String.format("%.2f", sizeList[i])).append("\t\t\t\t\t").append(testArray[i]).append("\t\t\t\t\t\t\t\t\t\t\t\t").append(rmList[i]).append("\n")
                                 .append("__________________________________\n");
 
-                URL.append("*Total Units*          : "+totalUnits.getText().toString())
-                        .append("\n*Total Running Metres* : "+totalRM.getText().toString())
-                        .append("*MT*                   : "+totalMT.getText().toString());
+                URL.append("*Total Units* : ").append(totalUnits.getText().toString())
+                        .append("\n*Total Running Metres* : ").append(totalRM.getText().toString())
+                        .append("*MT* : ").append(totalMT.getText().toString());
                 shareIntent.putExtra(Intent.EXTRA_TEXT, URL.toString());
                 startActivity(Intent.createChooser(shareIntent, "Share via"));
     }
@@ -366,16 +365,16 @@ public class MainActivity extends AppCompatActivity {
             rmList[i]=0;
             updateTU();
         }
-        tv150.setText(String.valueOf(rmList[0]));
-        tv175.setText(String.valueOf(rmList[1]));
-        tv200.setText(String.valueOf(rmList[2]));
-        tv225.setText(String.valueOf(rmList[3]));
-        tv250.setText(String.valueOf(rmList[4]));
-        tv275.setText(String.valueOf(rmList[5]));
-        tv300.setText(String.valueOf(rmList[6]));
-        tv360.setText(String.valueOf(rmList[7]));
-        tv125.setText(String.valueOf(rmList[8]));
         tv100.setText(String.valueOf(rmList[9]));
+        tv125.setText(String.valueOf(rmList[8]));
+        tv150.setText(String.valueOf(rmList[7]));
+        tv175.setText(String.valueOf(rmList[6]));
+        tv200.setText(String.valueOf(rmList[5]));
+        tv225.setText(String.valueOf(rmList[4]));
+        tv250.setText(String.valueOf(rmList[3]));
+        tv275.setText(String.valueOf(rmList[2]));
+        tv300.setText(String.valueOf(rmList[1]));
+        tv360.setText(String.valueOf(rmList[0]));
         et150.setText("");
         et175.setText("");
         et200.setText("");
@@ -439,22 +438,7 @@ public class MainActivity extends AppCompatActivity {
         }
         testArray=data.toString().split("\n");
 
-        for(int i=0; i<4; i++)
-        {
-            String temp=testArray[i];
-            testArray[i]=testArray[7-i];
-            testArray[7-i]=temp;
 
-            double tempRM= rmList[i];
-            rmList[i]=rmList[7-i];
-            rmList[7-i]=tempRM;
-        }
-        /*for(int i=0; i<5; i++)
-        {
-            int tempRM= (int) rmList[i];
-            rmList[i]=rmList[7-i];
-            rmList[7-i]=tempRM;
-        }*/
         et360.setText(testArray[0].equals("0") ?"":testArray[0]);
         et300.setText(testArray[1].equals("0") ?"":testArray[1]);
         et275.setText(testArray[2].equals("0") ?"":testArray[2]);
@@ -465,6 +449,6 @@ public class MainActivity extends AppCompatActivity {
         et150.setText(testArray[7].equals("0") ?"":testArray[7]);
         et125.setText(testArray[8].equals("0") ?"":testArray[8]);
         et100.setText(testArray[9].equals("0") ?"":testArray[9]);
-        Toast.makeText(this, "Loaded "+ Arrays.toString(testArray), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Loaded "+ Arrays.toString(testArray)+"\n"+Arrays.toString(rmList), Toast.LENGTH_LONG).show();
     }
 }
