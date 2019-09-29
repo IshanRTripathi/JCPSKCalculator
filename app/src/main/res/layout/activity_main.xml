@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/upperCL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/elevation_dummy"
         android:elevation="16dp"
-        android:id="@+id/upperCL">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView"
@@ -28,7 +30,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="56dp"
             android:text="@string/m_t"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView2"
@@ -44,7 +46,7 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintEnd_toStartOf="@+id/textView3"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.409"
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toTopOf="@+id/textView"
             app:layout_constraintVertical_bias="0.0" />
@@ -53,13 +55,13 @@
             android:id="@+id/totalRM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/zero"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/textView2"
-            app:layout_constraintHorizontal_bias="0.301"
+            app:layout_constraintHorizontal_bias="0.53"
             app:layout_constraintStart_toStartOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -67,13 +69,12 @@
             android:id="@+id/totalUnits"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/zero"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -81,13 +82,12 @@
             android:id="@+id/totalMT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/zero"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textView3"
-            app:layout_constraintHorizontal_bias="0.652"
             app:layout_constraintStart_toStartOf="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
             app:layout_constraintVertical_bias="0.0" />
@@ -97,7 +97,7 @@
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/parentCL"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/parentCL"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/upperCL"
@@ -108,12 +108,45 @@
             android:id="@+id/innerCL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
             android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/receiptButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Receipt"
+                android:onClick="generateReceipt"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/button100"
+                app:layout_constraintHorizontal_bias="0.049"
+                app:layout_constraintStart_toStartOf="@+id/button100" />
+
+            <Button
+                android:id="@+id/creditsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Credits"
+                app:layout_constraintBottom_toBottomOf="@+id/resetButton"
+                app:layout_constraintEnd_toEndOf="@+id/tv100"
+                app:layout_constraintStart_toStartOf="@+id/tv100"
+                app:layout_constraintTop_toTopOf="@+id/resetButton" />
+
+            <Button
+                android:id="@+id/resetButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset All"
+                app:layout_constraintBottom_toBottomOf="@+id/receiptButton"
+                app:layout_constraintEnd_toEndOf="@+id/et100"
+                app:layout_constraintStart_toStartOf="@+id/et100"
+                app:layout_constraintTop_toTopOf="@+id/receiptButton"
+                app:layout_constraintVertical_bias="0.0" />
 
             <Button
                 android:id="@+id/sizeButton"
@@ -132,8 +165,8 @@
                 android:id="@+id/unitsButton"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:background="@drawable/button_heading_bg"
                 android:clickable="false"
                 android:text="@string/units"
@@ -170,13 +203,127 @@
                 app:layout_constraintStart_toStartOf="@+id/sizeButton"
                 app:layout_constraintTop_toBottomOf="@+id/sizeButton" />
 
+            <Button
+                android:id="@+id/button300"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_inputs_bg"
+                android:text="@string/_3_00"
+                app:layout_constraintEnd_toEndOf="@+id/button360"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button360" />
+
+            <Button
+                android:id="@+id/button275"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_inputs_bg"
+                android:text="@string/_2_75"
+                app:layout_constraintEnd_toEndOf="@+id/button360"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button300" />
+
+            <Button
+                android:id="@+id/button250"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_inputs_bg"
+                android:text="@string/_2_50"
+                app:layout_constraintEnd_toEndOf="@+id/button360"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button275" />
+
+            <Button
+                android:id="@+id/button225"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_inputs_bg"
+                android:text="@string/_2_25"
+                app:layout_constraintEnd_toEndOf="@+id/button360"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button250" />
+
+            <Button
+                android:id="@+id/button200"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_inputs_bg"
+                android:text="@string/_2_00"
+                app:layout_constraintEnd_toEndOf="@+id/button360"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button225" />
+
+            <Button
+                android:id="@+id/button175"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_inputs_bg"
+                android:text="@string/_1_75"
+                app:layout_constraintEnd_toEndOf="@+id/button360"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button200" />
+
+            <Button
+                android:id="@+id/button150"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_inputs_bg"
+                android:text="@string/_1_50"
+                app:layout_constraintEnd_toEndOf="@+id/button360"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button175" />
+
+            <Button
+                android:id="@+id/button125"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_inputs_bg"
+                android:text="@string/_1_25"
+                app:layout_constraintEnd_toEndOf="@+id/button360"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button150" />
+
+            <Button
+                android:id="@+id/button100"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/button_inputs_bg"
+                android:text="@string/_1_00"
+                app:layout_constraintBottom_toTopOf="@+id/receiptButton"
+                app:layout_constraintEnd_toEndOf="@+id/button360"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button125" />
+
             <EditText
                 android:id="@+id/et360"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:background="@drawable/button_inputs_bg"
                 android:ems="10"
                 android:hint="@string/zero"
@@ -187,6 +334,156 @@
                 app:layout_constraintEnd_toEndOf="@+id/unitsButton"
                 app:layout_constraintStart_toStartOf="@+id/unitsButton"
                 app:layout_constraintTop_toBottomOf="@+id/unitsButton"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <EditText
+                android:id="@+id/et300"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/button_inputs_bg"
+                android:ems="10"
+                android:hint="@string/zero"
+                android:inputType="number"
+                android:padding="6dp"
+                android:tag="7"
+                app:layout_constraintBottom_toBottomOf="@+id/button300"
+                app:layout_constraintEnd_toEndOf="@+id/et360"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/et360"
+                app:layout_constraintTop_toTopOf="@+id/button300"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/et275"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/button_inputs_bg"
+                android:ems="10"
+                android:hint="@string/zero"
+                android:inputType="number"
+                android:padding="6dp"
+                android:tag="6"
+                app:layout_constraintBottom_toBottomOf="@+id/button275"
+                app:layout_constraintEnd_toEndOf="@+id/et360"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/et300"
+                app:layout_constraintTop_toTopOf="@+id/button275"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/et250"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/button_inputs_bg"
+                android:ems="10"
+                android:hint="@string/zero"
+                android:inputType="number"
+                android:padding="6dp"
+                android:tag="5"
+                app:layout_constraintBottom_toBottomOf="@+id/button250"
+                app:layout_constraintEnd_toEndOf="@+id/et360"
+                app:layout_constraintStart_toStartOf="@+id/et275"
+                app:layout_constraintTop_toTopOf="@+id/button250"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/et225"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/button_inputs_bg"
+                android:ems="10"
+                android:hint="@string/zero"
+                android:inputType="number"
+                android:padding="6dp"
+                android:tag="4"
+                app:layout_constraintBottom_toBottomOf="@+id/button225"
+                app:layout_constraintEnd_toEndOf="@+id/et360"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/et250"
+                app:layout_constraintTop_toTopOf="@+id/button225"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/et200"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/button_inputs_bg"
+                android:ems="10"
+                android:hint="@string/zero"
+                android:inputType="number"
+                android:padding="6dp"
+                android:tag="3"
+                app:layout_constraintBottom_toBottomOf="@+id/button200"
+                app:layout_constraintEnd_toEndOf="@+id/et360"
+                app:layout_constraintStart_toStartOf="@+id/et225"
+                app:layout_constraintTop_toTopOf="@+id/button200" />
+
+            <EditText
+                android:id="@+id/et175"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/button_inputs_bg"
+                android:ems="10"
+                android:hint="@string/zero"
+                android:inputType="number"
+                android:padding="6dp"
+                android:tag="2"
+                app:layout_constraintBottom_toBottomOf="@+id/button175"
+                app:layout_constraintEnd_toEndOf="@+id/et360"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/et200"
+                app:layout_constraintTop_toTopOf="@+id/button175"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/et150"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/button_inputs_bg"
+                android:ems="10"
+                android:hint="@string/zero"
+                android:inputType="number"
+                android:padding="6dp"
+                android:tag="1"
+                app:layout_constraintBottom_toBottomOf="@+id/button150"
+                app:layout_constraintEnd_toEndOf="@+id/et360"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/et175"
+                app:layout_constraintTop_toTopOf="@+id/button150"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <EditText
+                android:id="@+id/et125"
+                android:layout_width="72dp"
+                android:layout_height="40dp"
+                android:background="@drawable/button_inputs_bg"
+                android:ems="10"
+                android:hint="@string/zero"
+                android:inputType="number"
+                android:padding="6dp"
+                android:tag="1"
+                app:layout_constraintBottom_toBottomOf="@+id/button125"
+                app:layout_constraintEnd_toEndOf="@+id/et360"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/button125"
+                app:layout_constraintTop_toTopOf="@+id/button125"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <EditText
+                android:id="@+id/et100"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/button_inputs_bg"
+                android:ems="10"
+                android:hint="@string/zero"
+                android:inputType="number"
+                android:padding="6dp"
+                android:tag="1"
+                app:layout_constraintBottom_toBottomOf="@+id/button100"
+                app:layout_constraintEnd_toEndOf="@+id/et360"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/et175"
+                app:layout_constraintTop_toTopOf="@+id/button100"
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
@@ -206,35 +503,6 @@
                 app:layout_constraintTop_toTopOf="@+id/et360"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <Button
-                android:id="@+id/button300"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/button_inputs_bg"
-                android:text="@string/_3_00"
-                app:layout_constraintEnd_toEndOf="@+id/button360"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button360" />
-
-            <EditText
-                android:id="@+id/et300"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/button_inputs_bg"
-                android:ems="10"
-                android:hint="@string/zero"
-                android:inputType="number"
-                android:padding="6dp"
-                android:tag="7"
-                app:layout_constraintBottom_toBottomOf="@+id/button300"
-                app:layout_constraintEnd_toEndOf="@+id/et360"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/et360"
-                app:layout_constraintTop_toTopOf="@+id/button300"
-                app:layout_constraintVertical_bias="0.0" />
-
             <TextView
                 android:id="@+id/tv300"
                 android:layout_width="0dp"
@@ -249,35 +517,6 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/rmButton"
                 app:layout_constraintTop_toTopOf="@+id/et300"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <Button
-                android:id="@+id/button275"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/button_inputs_bg"
-                android:text="@string/_2_75"
-                app:layout_constraintEnd_toEndOf="@+id/button360"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button300" />
-
-            <EditText
-                android:id="@+id/et275"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/button_inputs_bg"
-                android:ems="10"
-                android:hint="@string/zero"
-                android:inputType="number"
-                android:padding="6dp"
-                android:tag="6"
-                app:layout_constraintBottom_toBottomOf="@+id/button275"
-                app:layout_constraintEnd_toEndOf="@+id/et360"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/et300"
-                app:layout_constraintTop_toTopOf="@+id/button275"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
@@ -296,34 +535,6 @@
                 app:layout_constraintTop_toTopOf="@+id/et275"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <Button
-                android:id="@+id/button250"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/button_inputs_bg"
-                android:text="@string/_2_50"
-                app:layout_constraintEnd_toEndOf="@+id/button360"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button275" />
-
-            <EditText
-                android:id="@+id/et250"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/button_inputs_bg"
-                android:ems="10"
-                android:hint="@string/zero"
-                android:inputType="number"
-                android:padding="6dp"
-                android:tag="5"
-                app:layout_constraintBottom_toBottomOf="@+id/button250"
-                app:layout_constraintEnd_toEndOf="@+id/et360"
-                app:layout_constraintStart_toStartOf="@+id/et275"
-                app:layout_constraintTop_toTopOf="@+id/button250"
-                app:layout_constraintVertical_bias="0.0" />
-
             <TextView
                 android:id="@+id/tv250"
                 android:layout_width="0dp"
@@ -339,35 +550,6 @@
                 app:layout_constraintStart_toStartOf="@+id/rmButton"
                 app:layout_constraintTop_toTopOf="@+id/et250"
                 app:layout_constraintVertical_bias="1.0" />
-
-            <Button
-                android:id="@+id/button225"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/button_inputs_bg"
-                android:text="@string/_2_25"
-                app:layout_constraintEnd_toEndOf="@+id/button360"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button250" />
-
-            <EditText
-                android:id="@+id/et225"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/button_inputs_bg"
-                android:ems="10"
-                android:hint="@string/zero"
-                android:inputType="number"
-                android:padding="6dp"
-                android:tag="4"
-                app:layout_constraintBottom_toBottomOf="@+id/button225"
-                app:layout_constraintEnd_toEndOf="@+id/et360"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/et250"
-                app:layout_constraintTop_toTopOf="@+id/button225"
-                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/tv225"
@@ -385,33 +567,6 @@
                 app:layout_constraintTop_toTopOf="@+id/et225"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <Button
-                android:id="@+id/button200"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/button_inputs_bg"
-                android:text="@string/_2_00"
-                app:layout_constraintEnd_toEndOf="@+id/button360"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button225" />
-
-            <EditText
-                android:id="@+id/et200"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/button_inputs_bg"
-                android:ems="10"
-                android:hint="@string/zero"
-                android:inputType="number"
-                android:padding="6dp"
-                android:tag="3"
-                app:layout_constraintBottom_toBottomOf="@+id/button200"
-                app:layout_constraintEnd_toEndOf="@+id/et360"
-                app:layout_constraintStart_toStartOf="@+id/et225"
-                app:layout_constraintTop_toTopOf="@+id/button200" />
-
             <TextView
                 android:id="@+id/tv200"
                 android:layout_width="0dp"
@@ -428,36 +583,6 @@
                 app:layout_constraintTop_toTopOf="@+id/et200"
                 app:layout_constraintVertical_bias="1.0" />
 
-            <Button
-                android:id="@+id/button175"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/button_inputs_bg"
-                android:text="@string/_1_75"
-                app:layout_constraintEnd_toEndOf="@+id/button360"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button200" />
-
-            <EditText
-                android:id="@+id/et175"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/button_inputs_bg"
-                android:ems="10"
-                android:hint="@string/zero"
-                android:inputType="number"
-                android:padding="6dp"
-                android:tag="2"
-                app:layout_constraintBottom_toBottomOf="@+id/button175"
-                app:layout_constraintEnd_toEndOf="@+id/et360"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/et200"
-                app:layout_constraintTop_toTopOf="@+id/button175"
-                app:layout_constraintVertical_bias="0.0" />
-
             <TextView
                 android:id="@+id/tv175"
                 android:layout_width="0dp"
@@ -472,36 +597,6 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/tv200"
                 app:layout_constraintTop_toTopOf="@+id/et175" />
-
-            <Button
-                android:id="@+id/button150"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/button_inputs_bg"
-                android:text="@string/_1_50"
-                app:layout_constraintEnd_toEndOf="@+id/button360"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button175" />
-
-            <EditText
-                android:id="@+id/et150"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/button_inputs_bg"
-                android:ems="10"
-                android:hint="@string/zero"
-                android:inputType="number"
-                android:padding="6dp"
-                android:tag="1"
-                app:layout_constraintBottom_toBottomOf="@+id/button150"
-                app:layout_constraintEnd_toEndOf="@+id/et360"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/et175"
-                app:layout_constraintTop_toTopOf="@+id/button150"
-                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/tv150"
@@ -519,36 +614,6 @@
                 app:layout_constraintTop_toTopOf="@+id/et150"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <Button
-                android:id="@+id/button125"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/button_inputs_bg"
-                android:text="@string/_1_25"
-                app:layout_constraintEnd_toEndOf="@+id/button360"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button150" />
-
-            <EditText
-                android:id="@+id/et125"
-                android:layout_width="72dp"
-                android:layout_height="40dp"
-                android:background="@drawable/button_inputs_bg"
-                android:ems="10"
-                android:hint="@string/zero"
-                android:inputType="number"
-                android:padding="6dp"
-                android:tag="1"
-                app:layout_constraintBottom_toBottomOf="@+id/button125"
-                app:layout_constraintEnd_toEndOf="@+id/et360"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/button125"
-                app:layout_constraintTop_toTopOf="@+id/button125"
-                app:layout_constraintVertical_bias="1.0" />
-
             <TextView
                 android:id="@+id/tv125"
                 android:layout_width="112dp"
@@ -563,38 +628,6 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/et125"
                 app:layout_constraintTop_toTopOf="@+id/et125"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <Button
-                android:id="@+id/button100"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginBottom="32dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/button_inputs_bg"
-                android:text="@string/_1_00"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/button360"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button125" />
-
-            <EditText
-                android:id="@+id/et100"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/button_inputs_bg"
-                android:ems="10"
-                android:hint="@string/zero"
-                android:inputType="number"
-                android:padding="6dp"
-                android:tag="1"
-                app:layout_constraintBottom_toBottomOf="@+id/button100"
-                app:layout_constraintEnd_toEndOf="@+id/et360"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/et175"
-                app:layout_constraintTop_toTopOf="@+id/button100"
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
