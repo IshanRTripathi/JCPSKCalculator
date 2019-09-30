@@ -2,6 +2,8 @@ package com.ishanrtripathi.jcpskcalculator;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,6 +12,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -19,6 +29,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+//    private static final int MY_REQUEST_CODE = 404; // update cancelled
     EditText et360,et300,et275,et250,et225,et200,et175,et150,et125,et100;
     TextView tv360,tv300,tv275,tv250,tv225,tv200,tv175,tv150,tv125,tv100,totalUnits,totalRM,totalMT;
     double[] rmList = new double[10];
@@ -34,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        checkForUpdates();
         et360=findViewById(R.id.et360);
         et300=findViewById(R.id.et300);
         et275=findViewById(R.id.et275);
@@ -58,21 +70,11 @@ public class MainActivity extends AppCompatActivity {
         totalRM=findViewById(R.id.totalRM);
         totalMT=findViewById(R.id.totalMT);
         resetButton=findViewById(R.id.resetButton);
-        resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetAll();
-            }
-        });
+        resetButton.setOnClickListener(v -> resetAll());
 
         receiptButton=findViewById(R.id.receiptButton);
         creditsButton=findViewById(R.id.creditsButton);
-        creditsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Credits.class));
-            }
-        });
+        creditsButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,Credits.class)));
 
         et360.addTextChangedListener(new TextWatcher() {
             @Override
@@ -323,6 +325,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void checkForUpdates() {
+        // Creates instance of the manager.
+        AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(MainActivity.this);
+
+
+        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+
+        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
+                // Request the update.
+                Toast.makeText(this, "App update available", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("App update available")
+                        .setPositiveButton("UPDATE", (dialog, id) -> startActivity(new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("https://play.google.com/store/apps/details?id=com.ishanrtripathi.jcpskcalculator"))))
+                        .setNegativeButton("Later", (dialog, id) -> {
+                            // User cancelled the dialog
+                        });
+                // Create the AlertDialog object and return it
+            }
+            else
+                Toast.makeText(this, "App is up to date", Toast.LENGTH_SHORT).show();
+        });
+    }
+
     @SuppressLint("DefaultLocale")
     public void generateReceipt(View v)
     {
@@ -338,7 +365,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
                 StringBuilder URL = new StringBuilder();
-                URL.append("============ *Receipt* ============\n\n")
+                URL.append("*Jaypee Shaktiman Order Details*\n\n")
                         .append("*Size*\t\t\t\t*Units*\t\t\t\t*Running Metres*\n")
                         .append("__________________________________\n");
                 for(int i=0; i<10; i++)
