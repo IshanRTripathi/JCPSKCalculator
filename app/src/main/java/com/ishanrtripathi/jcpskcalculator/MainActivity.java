@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
                     tuList[2] = Integer.parseInt(s.toString());
-                    rmList[2] = tuList[5] * 2.75;
+                    rmList[2] = tuList[2] * 2.75;
                 }catch (NumberFormatException e)
                 {
                     tuList[2]=0;

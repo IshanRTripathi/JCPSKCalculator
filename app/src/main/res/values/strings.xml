@@ -17,7 +17,21 @@
     <string name="total_units">Total Units</string>
     <string name="total_rm">Total RM</string>
     <string name="m_t">M T</string>
-    <string name="z.z">0.0</string>
     <string name="_1_25">1.25</string>
     <string name="_1_00">1.00</string>
+    <string name="share_this_app">Share this app</string>
+    <string name="update_app">Update app</string>
+    <string name="owned_by">Owned By</string>
+    <string name="sandip_kumar_tripathi">Sandip Kumar Tripathi</string>
+    <string name="manager_sales">Manager (Sales)</string>
+    <string name="jaypee_cement_corporation_limited">Jaypee Cement Corporation Limited</string>
+    <string name="gorakhpur_uttar_pradesh">Gorakhpur, Uttar Pradesh</string>
+    <string name="software_developer">Software Developer</string>
+    <string name="kiit_university_bhubaneswar">KIIT University, Bhubaneswar</string>
+    <string name="developed_by">Developed By</string>
+    <string name="ishan_r_tripathi">Ishan R Tripathi</string>
+    <string name="share_order">Share Order</string>
+    <string name="credits">Credits</string>
+    <string name="reset_all">Reset All</string>
+    <string name="zeroInitialiser">0.0</string>
 </resources>

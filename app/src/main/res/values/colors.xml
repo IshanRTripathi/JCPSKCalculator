@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#046cba</color>
     <color name="colorPrimaryDark">#c23616</color>
     <color name="colorAccent">#000</color>
     <color name="colorHeadingButton">#e84118</color>
     <color name="editTextColor">#FFF</color>
+    <color name="receiptColor">#FFCC00</color>
+    <color name="resetColor">#FF0000</color>
 </resources>
