@@ -122,10 +122,12 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
                 android:background="@color/receiptColor"
                 android:onClick="generateReceipt"
                 android:text="@string/share_order"
                 android:textColor="#fff"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/button100"
                 app:layout_constraintStart_toStartOf="@+id/button100"
                 app:layout_constraintTop_toBottomOf="@+id/button100" />
